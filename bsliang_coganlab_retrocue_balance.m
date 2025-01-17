@@ -47,19 +47,30 @@ audiowrite('ree_human_rms.wav', ree_human_rms, Fs);
 %% gTTS
 cd('C:\Users\bl314\Box\CoganLab\IndividualMeetings\Baishen\meetings\retrocue_task_stim_trial_final\gTTS')
 
-[y_ga, Fs] = audioread('ga.wav');
+% Updated 20250117: note that the script originally read sound files
+% ga.wav, mo.wav, and ree.wav. But I then used the cut files that have been
+% used for two patients. They are download from the github repository
+% https://github.com/coganlab/Retrocue/tree/main/stim (version:
+% 6692123854c89c9486ed2f2fbc3099547533ba9c) (be0ed7a). The files names were
+% originally ga_gTTS_rms.wav, I added 01_cut here.
+% Use these sounds to updated the intensity as they are cut.
+
+%[y_ga, Fs] = audioread('ga.wav');
+[y_ga, Fs] = audioread('ga_gTTS_rms01_cut.wav');
 ga_gTTS_rms=bsliang_balanceRMS_rmblank(y_ga,rms0);
 max(abs(ga_gTTS_rms)) % should not be higher than 1
 bsliang_rmbrms(ga_gTTS_rms)
 audiowrite('ga_gTTS_rms.wav', ga_gTTS_rms, Fs);
 
-[y_mo, ~] = audioread('mo.wav');
+%[y_mo, ~] = audioread('mo.wav');
+[y_mo, Fs] = audioread('mo_gTTS_rms01_cut.wav');
 mo_gTTS_rms=bsliang_balanceRMS_rmblank(y_mo,rms0);
 max(abs(mo_gTTS_rms)) % should not be higher than 1
 bsliang_rmbrms(mo_gTTS_rms)
 audiowrite('mo_gTTS_rms.wav', mo_gTTS_rms, Fs);
 
-[y_ree, ~] = audioread('ree.wav');
+%[y_ree, ~] = audioread('ree.wav');
+[y_ree, Fs] = audioread('ree_gTTS_rms01_cut.wav');
 re_gTTS_rms=bsliang_balanceRMS_rmblank(y_ree,rms0);
 max(abs(re_gTTS_rms)) % should not be higher than 1
 bsliang_rmbrms(re_gTTS_rms)
