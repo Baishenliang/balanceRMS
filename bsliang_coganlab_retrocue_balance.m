@@ -1,5 +1,5 @@
 addpath('D:\bsliang_Coganlabcode\lexical_retro_delay_expdesign\balanceRMS')
-rms0=0.1;
+rms0=0.3;
 %% Tone 500ms
 cd('D:\bsliang_Coganlabcode\Retrocue_taskscripts\stim')
 [y_tone, Fs] = audioread('tone500_3.wav');
@@ -49,15 +49,18 @@ cd('C:\Users\bl314\Box\CoganLab\IndividualMeetings\Baishen\meetings\retrocue_tas
 
 [y_ga, Fs] = audioread('ga.wav');
 ga_gTTS_rms=bsliang_balanceRMS_rmblank(y_ga,rms0);
+max(abs(ga_gTTS_rms)) % should not be higher than 1
 bsliang_rmbrms(ga_gTTS_rms)
 audiowrite('ga_gTTS_rms.wav', ga_gTTS_rms, Fs);
 
 [y_mo, ~] = audioread('mo.wav');
 mo_gTTS_rms=bsliang_balanceRMS_rmblank(y_mo,rms0);
+max(abs(mo_gTTS_rms)) % should not be higher than 1
 bsliang_rmbrms(mo_gTTS_rms)
 audiowrite('mo_gTTS_rms.wav', mo_gTTS_rms, Fs);
 
 [y_ree, ~] = audioread('ree.wav');
 re_gTTS_rms=bsliang_balanceRMS_rmblank(y_ree,rms0);
+max(abs(re_gTTS_rms)) % should not be higher than 1
 bsliang_rmbrms(re_gTTS_rms)
 audiowrite('ree_gTTS_rms.wav', re_gTTS_rms, Fs);
