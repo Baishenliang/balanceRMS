@@ -32,7 +32,7 @@ for k = 1:length(wav_files)
     disp(strjoin(["Tested RMS without gap: ", num2str(bsliang_rmbrms(y_rms))]));
     % save
     [~, name, ext] = fileparts(wav_files(k).name);
-    new_name = [name, '_rms', num2str(rms0), rs_ext, ext];
+    new_name = [name, rs_ext, '_rms', num2str(rms0), ext];
     output_file = fullfile(output_dir, new_name);
     audiowrite(output_file, y_rms, target_fs);
 end
